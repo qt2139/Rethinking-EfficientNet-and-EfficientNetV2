@@ -2,8 +2,17 @@
 Qimeng Tao(qt2139), Aditya Kulkarni(ak4725)
 
 ##  Description of the project
+This is my final project for COMS 6998 at Columbia University and my advisor is Prof. Parijat Dube. In this final project we discuss the impact of strengthening shallow networks on accuracy. 
 
-##  description of the repository
+When we use a convolutional neural network, the shallow layer will extract Edges, Texture, and Colors in the image, and the deep convolution will contain some local features. After summarizing all the information, we can get the final classification. 
+
+
+According to Visualizing and Understanding Convolutional Networks (https://arxiv.org/abs/1311.2901), in order to obtain higher accuracy, make the shallow network more powerful, and let the shallow network extract more information is crucial.
+
+We use EfficientNet and EfficientNetV2 for comparison, because EfficientNet not only has fast training speed and high accuracy. Our modified model is also based on EfficientNetV2_Large. The experimental results show that when the shallow neural network has more powerful performance, the accuracy increases.
+
+
+##  Description of the repository
 
 
 ##  Introduction
