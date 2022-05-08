@@ -10,12 +10,18 @@ We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 i
 
 ![sample_pics](https://user-images.githubusercontent.com/90971979/167304558-e1f37b8c-b191-473c-acd3-0835f84df6c0.png)
 
-##  Architecture
-We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
-
 
 ##  Results
+We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
+First, we get 8 sub-models using 8 different scaling factors and train them on the flower dataset. The architecture of the network is shown in Fig.
 
+![image](https://user-images.githubusercontent.com/90971979/167306416-1373a361-71c7-4167-acba-cdbd5aaf4bfa.png)
+
+We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the following results.
+| Architecture | Epoch#  | Loss | Accuracy |
+| -------------| -----   | --------------- |
+| EfficientB0  | Epoch29 | 0.071 | 0.96    |
+| EfficientB1  | Epoch29 | 0.07  | 0.964   |
 
 ##  Environment
 Python 3.8  
