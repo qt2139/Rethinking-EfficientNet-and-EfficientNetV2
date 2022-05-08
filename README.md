@@ -109,7 +109,7 @@ We train from scratch， we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0
 Then we use pretrained weights (pretrained on ImageNet) and get the following results.
 
 | **Model Architecture**        | **Dataset, Epoch Info** | **Loss** | **Accuracy** | **Time Taken**                    |
-|------------------------------------|------------------------------|---------------|-------------------|----------------------------------------|
+|:------------------------------------:|:------------------------------:|:---------------:|:-------------------:|:----------------------------------------:|
 | Pretrained EfficientNetV2 (Small)  | Train, Epoch 29              | 0.239         | 0.920             | [00:24<00:00, 14.76it/s] |
 | Pretrained  EfficientNetV2 (Small) | Valid, Epoch 29              | 0.137         | 0.960             | [00:07<00:00, 11.87it/s] |
 | Pretrained EfficientNetV2 (Medium) | Train, Epoch 29              | 0.237         | 0.923             | [00:36<00:00, 10.03it/s] |
