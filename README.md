@@ -20,7 +20,7 @@ First, we get 8 sub-models using 8 different scaling factors and train them on t
 We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the following results.
 
 | Architecture | Epoch#  | Loss | Accuracy |
-| -------------| ------- | --------------- |
+| -------------| ------- | ------|-------- |
 | EfficientB0  | Epoch29 | 0.071 | 0.96    |
 | EfficientB1  | Epoch29 | 0.07  | 0.964   |
 
