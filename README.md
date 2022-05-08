@@ -19,14 +19,24 @@ We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 i
 1. First please download the dataset, https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz
 2. In train.py, please set --data-path to the absolute path of the decompressed flower_photos folder.
 3. Download pretrained weights
-4. In train.py, please set the --weights parameter to the downloaded pretrained weights path.
-5. After setting the path of the dataset -- data-path and the path of pre-training weights -- weights, you can use train.py to start training (the class_indices.json file will be automatically generated during the training process)
-6. In predict.py, please import the same model as in the training script, and set model_weight_path to the weight path of the trained model (saved in the weights folder by default)
-7. In predict.py, please set img_path to the absolute path of the image you need to predict.
-8. After setting the weight path model_weight_path and the predicted image path img_path, you can use predict.py to make predictions.
-9. If you want to use your own dataset, please arrange it according to the file structure of the flower classification dataset (that is, one category corresponds to one folder), and set num_classes in the training and prediction scripts to the number of categories of your own data.
+4. If you want to train from scratch, set 'freeze-layers' to False in the fourth-to-last line in train.py, and set 'freeze-layers' to True if you want to use pretrained weights.
+5. In train.py, please set the --weights parameter to the downloaded pretrained weights path.
+6. After setting the path of the dataset -- data-path and the path of pre-training weights -- weights, you can use train.py to start training (the class_indices.json file will be automatically generated during the training process)
+7. In predict.py, please import the same model as in the training script, and set model_weight_path to the weight path of the trained model (saved in the weights folder by default)
+8. In predict.py, please set img_path to the absolute path of the image you need to predict.
+9. After setting the weight path model_weight_path and the predicted image path img_path, you can use predict.py to make predictions.
+10. If you want to use your own dataset, please arrange it according to the file structure of the flower classification dataset (that is, one category corresponds to one folder), and set num_classes in the training and prediction scripts to the number of categories of your own data.
+11. In your terminal, go to the path of your train.py. Because we have created python scripts for different models, when you run our function, please change the python script name according to your needs, for example, if you want to use the EfficientNet_Large model trained from scratch, please refer to the code below.
 ```bash
-Go to your train.py directory in your terminal and enter: python train.py. to run our model.
+python train_efficientv2_l.py
+```
+If you want to use the EfficientNet_Large model with pre-trained weights, please refer to the following code.
+```bash
+python train_pretrain_efficientv2_l.py
+```
+11. When you want to use predict.py, enter this line of code to get the result, and we save the prediction result in the same path.
+12. ```bash
+python predict.py
 ```
 
 ##  Results
