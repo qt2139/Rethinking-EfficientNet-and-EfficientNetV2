@@ -24,6 +24,11 @@ We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight
 | EfficientB0  | Epoch29 | 0.071 | 0.96    |
 | EfficientB1  | Epoch29 | 0.07  | 0.964   |
 
+| Network Structure | Error | Reference Error | Traning Times |
+| ----------------- | ----- | --------------- | ------------- |
+| With Shortcut     | 6.71% | 5.52% | 107s / epochs(bath size = 64) |
+| Without Shortcut   | 6.68% | 5.52% | 98s  / epochs(bath size = 64) |
+
 ##  Environment
 Python 3.8  
 Pytorch-gpu with Cuda 11.3
