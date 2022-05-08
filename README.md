@@ -2,7 +2,9 @@
 Qimeng Tao(qt2139), Aditya Kulkarni(ak4725)
 
 ##  Description of the project
-This is my final project for COMS 6998 at Columbia University and my advisor is Prof. Parijat Dube. In this final project we discuss the impact of strengthening shallow networks on accuracy. 
+This is our final project for COMS 6998 at Columbia University and our advisor is Prof. Parijat Dube. 
+
+In this final project we discuss the impact of strengthening shallow networks on accuracy. 
 
 When we use a convolutional neural network, the shallow layer will extract Edges, Texture, and Colors in the image, and the deep convolution will contain some local features. After summarizing all the information, we can get the final classification. 
 
@@ -25,10 +27,15 @@ With these two methods, our modified model has higher accuracy.
 
 ##  Introduction
 Tan et. Al's EfficientNetV2 (https://arxiv.org/abs/2104.00298) family of convolutional networks are well known in the industry for (i) their high accuracies but more importantly (ii) the drastically faster training speed and better parameter efficiency than the previous EfficientNet (https://arxiv.org/abs/1905.11946). Tan et. Al's paper also provides us a great understanding of the architecture of these deep networks as well as validation results on well-known datasets such as ImageNet and CIFAR. 
-In this project we intend to provide further justification to demonstrate the advancements and improvements in the latest iterations of EfficientNet (version 2) using our own 5-class flower dataset (ADD LINK/ INFO). This is done by comparing various iterations of EfficientNet, EfficientNetV2, and pre-trained EfficientNetV2 by comparing them based on size, parameters, training time, loss, etc. Further, we also demonstrate our understanding of the architecture by creating our own modified EfficientNetV2 and observe the results.
 
+Efficient proposed Compound Scaling, in which we scale either the depth, using a constant ratio in three dimensions- width, depth, and resolution. Traditional CNN's were scaled randomly based on depth. However, this causes the accury to saturate due to the additional layers- leading to the degradation problem. Compound Scaling, on the other hand, scales the three dimensions using a constant ratio thus balancing the network across them. Further, EfficientNetV2 brings in the concept of progressive learning- increasing the image sizes progressively as training continues- which drastically reduces training time. 
 
 ![image](https://user-images.githubusercontent.com/90971979/167310890-b8c72934-8a79-4414-8470-85f40cb264dc.png)
+
+In this project we intend to provide further justification to demonstrate the advancements and improvements in the latest iterations of EfficientNet (version 2) using our own 5-class flower dataset (described below). This is done by comparing various iterations of EfficientNet, EfficientNetV2, and pre-trained EfficientNetV2 by comparing them based on size, parameters, training time, loss, etc. Further, we also demonstrate our understanding of the architecture by creating our own modified EfficientNetV2 and observe the results.
+
+
+
 
 
 ##  Dataset
@@ -69,19 +76,47 @@ First, we get 8 sub-models using 8 different scaling factors and train them on t
 
 We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the following results.
 
-| Architecture | Epoch#  | Loss | Accuracy |
-| -------------| ------- | ------|-------- |
-| EfficientB0  | Epoch29 | 0.071 | 0.96    |
-| EfficientB1  | Epoch29 | 0.07  | 0.964   |
+| **Model Architecture** | **Epoch#** | **Loss** | **Accuracy** |
+|:--------------------------:|:-------------------:|:---------------:|:-------------------:|
+| EfficientNet-B0          | Epoch 29          | 0.071         | 0.96              |
+| EfficientNet-B1          | Epoch 29          | 0.07          | 0.964             |
+| EfficientNet-B2          | Epoch 29          | 0.066         | 0.967             |
+| EfficientNet-B3          | Epoch 29          | 0.063         | 0.972             |
+| EfficientNet-B4          | Epoch 29          | 0.6           | 0.974             |
+| EfficientNet-B5          | Epoch 29          | 0.58          | 0.977             |
+| EfficientNet-B6          | Epoch 29          | 0.57          | 0.979             |
+| EfficientNet-B7          | Epoch 29          | 0.56          | 0.981             |
+
+
+
 
 Next, we get Small, Medium and Large models using 3 scaling factors. The architecture of the network is shown in Fig.
 
 ![image](https://user-images.githubusercontent.com/90971979/167307212-18fab78c-0ece-432f-b60a-90adda3a55e0.png)
-
+| **Model Architecture**        | **Dataset, Epoch Info** | **Loss** | **Accuracy** | **Time Taken**                    |
+|:-------------------------------:|:----------------------------:|:-------------:|:-----------------:|:--------------------------------------:|
+| EfficientNetV2 (Small)          | Train, Epoch 29              | 0.074         | 0.978             | [01:15<00:00,  4.88it/s] |
+| EfficientNetV2 (Small)          | Valid, Epoch 29              | 0.075         | 0.982             | [00:07<00:00, 11.65it/s] |
+| EfficientNetV2 (Medium)         | Train, Epoch 29              | 0.052         | 0.985             | [02:04<00:00,  2.95it/s] |
+| EfficientNetV2 (Medium)         | Valid, Epoch 29              | 0.100         | 0.973             | [00:11<00:00,  8.07it/s] |
+| EfficientNetV2 (Large)          | Train, Epoch 29              | 0.053         | 0.982             | [04:00<00:00,  1.53it/s] |
+| EfficientNetV2 (Large)          | Valid, Epoch 29              | 0.074         | 0.983             | [00:21<00:00,  4.15it/s] |
+| Modified EfficientNetV2 (Large) | Train, Epoch 29              | 0.049         | 0.984             | [04:20<00:00,  1.47it/s] |
+| Modified EfficientNetV2 (Large) | Valid, Epoch 29              | 0.071         | 0.984             | [00:23<00:00,  3.95it/s] |
 
 We train from scratch， we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the the following results.
 
 Then we use pretrained weights (pretrained on ImageNet) and get the following results.
+
+| **Model Architecture**        | **Dataset, Epoch Info** | **Loss** | **Accuracy** | **Time Taken**                    |
+|------------------------------------|------------------------------|---------------|-------------------|----------------------------------------|
+| Pretrained EfficientNetV2 (Small)  | Train, Epoch 29              | 0.239         | 0.920             | [00:24<00:00, 14.76it/s] |
+| Pretrained  EfficientNetV2 (Small) | Valid, Epoch 29              | 0.137         | 0.960             | [00:07<00:00, 11.87it/s] |
+| Pretrained EfficientNetV2 (Medium) | Train, Epoch 29              | 0.237         | 0.923             | [00:36<00:00, 10.03it/s] |
+| Pretrained EfficientNetV2 (Medium) | Valid, Epoch 29              | 0.131         | 0.964             | [00:11<00:00,  7.73it/s] |
+| Pretrained EfficientNetV2 (Large)  | Train, Epoch 29              | 0.224         | 0.928             | [01:13<00:00,  5.02it/s] |
+| Pretrained EfficientNetV2 (Large)  | Valid, Epoch 29              | 0.118         | 0.966             | [00:23<00:00,  3.98it/s] |
+
 ##  Environment
 Google Cloud Platform (NVIDIA Tesla T4)  
 Python 3.8  
