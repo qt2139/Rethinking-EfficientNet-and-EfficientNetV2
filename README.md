@@ -76,6 +76,8 @@ First, we get 8 sub-models using 8 different scaling factors and train them on t
 
 We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the following results.
 
+
+  
 | **Model Architecture** | **Epoch#** | **Loss** | **Accuracy** |
 |:--------------------------:|:-------------------:|:---------------:|:-------------------:|
 | EfficientNet-B0          | Epoch 29          | 0.071         | 0.96              |
@@ -86,6 +88,7 @@ We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight
 | EfficientNet-B5          | Epoch 29          | 0.58          | 0.977             |
 | EfficientNet-B6          | Epoch 29          | 0.57          | 0.979             |
 | EfficientNet-B7          | Epoch 29          | 0.56          | 0.981             |
+
 
 
 
