@@ -25,7 +25,9 @@ We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 i
 7. In predict.py, please set img_path to the absolute path of the image you need to predict.
 8. After setting the weight path model_weight_path and the predicted image path img_path, you can use predict.py to make predictions.
 9. If you want to use your own dataset, please arrange it according to the file structure of the flower classification dataset (that is, one category corresponds to one folder), and set num_classes in the training and prediction scripts to the number of categories of your own data.
-10. Go to your train.py directory in your terminal and enter: python train.py. to run our model.
+```bash
+Go to your train.py directory in your terminal and enter: python train.py. to run our model.
+```
 
 ##  Results
 We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
