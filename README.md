@@ -68,6 +68,14 @@ python train_pretrain_efficientv2_l.py
 python predict.py
 ```
 
+For EfficientNet (version 1):
+- EfficientNet can be run in similar fashion as above. 
+- Pretrained models are stored in torch_efficientnet folder
+- Data is same data- ```flower_data``` folder
+- To train the model, add image paths in utils.py, choose model through ```num_model``` parameter in train.py, and finally run the following command: ``` python train.py ```
+- This should create a model. Call ```python predict.py``` to check results. Ensure you change ```img_path``` parameter in predict.py.
+
+
 ##  Results
 We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
 First, we get 8 sub-models using 8 different scaling factors and train them on the flower dataset. The architecture of the network is shown in Fig.
