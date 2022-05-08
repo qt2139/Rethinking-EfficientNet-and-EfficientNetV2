@@ -30,12 +30,13 @@ We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 i
 ```bash
 python train_efficientv2_l.py
 ```
+Running train.py will also get four pictures, which are training loss, training accuracy, validation loss, and validation accuracy. These four pictures will be saved under the same path.
 If you want to use the EfficientNet_Large model with pre-trained weights, please refer to the following code.
 ```bash
 python train_pretrain_efficientv2_l.py
 ```
 11. When you want to use predict.py, enter this line of code to get the result, and we save the prediction result in the same path.
-12. ```bash
+```bash
 python predict.py
 ```
 
