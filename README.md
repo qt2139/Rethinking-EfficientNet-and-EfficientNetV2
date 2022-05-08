@@ -1,4 +1,4 @@
-# Rethinking EfficientNet and EfficientNetV2 - Make a Powerful Shallow Network
+# Rethinking EfficientNet and EfficientNetV2 - Making shallow networks more powerful
 Qimeng Tao(qt2139), Aditya Kulkarni(ak4725)
 
 ##  Description of the project
@@ -13,7 +13,15 @@ We use EfficientNet and EfficientNetV2 for comparison, because EfficientNet not 
 
 
 ##  Description of the repository
+This repository is our code and it contains two folders, EfficientNet and EfficientNetV2. Our goal is to perform image classification faster and more accurately. Now it contains 12 models, namely EfficientNetB0-B7, EfficientNetV2 Small, EfficientNetV2 Medium, EfficientNetV2 Large and Modified models.
 
+Our core idea is to make shallow networks more powerful. To achieve our purpose, we use two methods. For the first method, we refer to Deep Networks with Stochastic Depth (https://arxiv.org/abs/1603.09382) . This method is to randomly discard the main branch of each block in the network. As can be seen from the figure, if the current Block is in the inactive state, then the output of Block t-1 is the input of Block t+1. We set a linear decay function, based on the larger weights of the shallow network, so that each block of the shallow network has a greater probability of being saved during training.
+
+![image](https://user-images.githubusercontent.com/90971979/167310056-7202f2aa-7af8-45c4-8aba-6324e82423e1.png)
+
+
+The second method is to replace MBConv in shallow network with Fused-MBConv. Because DepthWise convolution is used in MBConv, although it has fewer training parameters than ordinary convolution, it also makes the shallow layer of the network lose the ability to learn.
+With these two methods, our modified model has higher accuracy.
 
 ##  Introduction
 Tan et. Al's EfficientNetV2 (https://arxiv.org/abs/2104.00298) family of convolutional networks are well known in the industry for (i) their high accuracies but more importantly (ii) the drastically faster training speed and better parameter efficiency than the previous EfficientNet (https://arxiv.org/abs/1905.11946). Tan et. Al's paper also provides us a great understanding of the architecture of these deep networks as well as validation results on well-known datasets such as ImageNet and CIFAR. 
@@ -22,7 +30,7 @@ In this project we intend to provide further justification to demonstrate the ad
 ##  Dataset
 We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 images of 5 types of flowers (daisies, dandelions, roses, sunflowers, tulips)
 
-![sample_pics](https://user-images.githubusercontent.com/90971979/167304558-e1f37b8c-b191-473c-acd3-0835f84df6c0.png)
+![sample_pics](https://user-images.githubusercontent.com/90971979/167304558-e1f37b8c-b191-473c-acd3-0835f84df6c0.png)</a>
 
 ##  Example commands to execute the code
 1. First please download the dataset, https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz
@@ -71,6 +79,6 @@ We train from scratch， we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0
 
 Then we use pretrained weights (pretrained on ImageNet) and get the following results.
 ##  Environment
+Google Cloud Platform (NVIDIA Tesla T4)  
 Python 3.8  
 Pytorch-gpu with Cuda 11.3
-Google Cloud Platform (NVIDIA Tesla T4)
