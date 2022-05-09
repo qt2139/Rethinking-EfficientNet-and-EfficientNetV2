@@ -154,7 +154,7 @@ This image is the validation accuracy of EfficientNetV2_Large with pretrained we
 <p align="center">
   <img width="1000" height="800" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/results/my_efficientnetv2_l_val_accuracy.png">
 </p>
-By training the model with pretrained weights, we can see that the training time with pretrained weights is reduced by about 3-4 times compared to training from scratch. At the same time, the accuracy rate basically did not decrease significantly. This is very important in industry.
+By training the model with pretrained weights, we can see that the training time with pretrained weights is reduced by about 3-4 times compared to training from scratch. At the same time, the accuracy did not decrease significantly. This is really important in industry.
 
 This is our modified model architecture.
 <p align="center">
