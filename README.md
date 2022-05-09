@@ -31,7 +31,7 @@ Tan et. Al's EfficientNetV2 (https://arxiv.org/abs/2104.00298) family of convolu
 Efficient proposed Compound Scaling, in which we scale either the depth, using a constant ratio in three dimensions- width, depth, and resolution. Traditional CNN's were scaled randomly based on depth. However, this causes the accury to saturate due to the additional layers- leading to the degradation problem. Compound Scaling, on the other hand, scales the three dimensions using a constant ratio thus balancing the network across them. Further, EfficientNetV2 brings in the concept of progressive learning- increasing the image sizes progressively as training continues- which drastically reduces training time. 
 
 <p align="center">
-  <img width="1174" height="484" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/model%20scaling.png">
+  <img width="1175" height="484" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/model%20scaling.png">
 </p>
 
 In this project we intend to provide further justification to demonstrate the advancements and improvements in the latest iterations of EfficientNet (version 2) using our own 5-class flower dataset (described below). This is done by comparing various iterations of EfficientNet, EfficientNetV2, and pre-trained EfficientNetV2 by comparing them based on size, parameters, training time, loss, etc. Further, we also demonstrate our understanding of the architecture by creating our own modified EfficientNetV2 and observe the results.
@@ -62,12 +62,12 @@ We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 i
 ```bash
 python train_efficientv2_l.py
 ```
-Running train.py will also get four pictures, which are training loss, training accuracy, validation loss, and validation accuracy. These four pictures will be saved under the same path.
+Running train.py will also get four images, which are training loss, training accuracy, validation loss, and validation accuracy. These four pictures will be saved under the same path.
 If you want to use the EfficientNet_Large model with pre-trained weights, please refer to the following code.
 ```bash
 python train_pretrain_efficientv2_l.py
 ```
-11. When you want to use predict.py, enter this line of code to get the result, and we save the prediction result in the same path.
+12. When you want to use predict.py, enter this line of code to get the result, and we save the prediction result in the same path.
 ```bash
 python predict.py
 ```
@@ -81,8 +81,14 @@ For EfficientNet (version 1):
 
 
 ##  Results
-We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
-First, we get 8 sub-models using 8 different scaling factors and train them on the flower dataset. The architecture of the network is shown in Table.
+This is our Solution architecture. We will experiment according to this flowchart.
+
+<p align="center">
+  <img width="1255" height="721" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/Rethinking%20EfficientNet%20and%20EfficientNetV2.png">
+</p>
+
+We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model. The modified model makes the shallow network more powerful and can extract more effective information.  
+First, we get 8 sub - EfficientNet models by using 8 different scaling factors and train them on the flower dataset. The architecture of the EfficientNet is shown in table.
 
 <p align="center">
   <img width="932" height="448" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/table1.png">
@@ -108,7 +114,7 @@ We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight
 
 
 
-Next, we get Small, Medium and Large models using 3 scaling factors. The architecture of the network is shown in Table.
+Next, we get Small, Medium and Large models using 3 scaling factors. The architecture of the network is shown in table.
 
 <p align="center">
   <img width="884" height="375" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/table2.png">
