@@ -78,7 +78,7 @@ For EfficientNet (version 1):
 
 ##  Results
 We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
-First, we get 8 sub-models using 8 different scaling factors and train them on the flower dataset. The architecture of the network is shown in Fig.
+First, we get 8 sub-models using 8 different scaling factors and train them on the flower dataset. The architecture of the network is shown in Table.
 
 ![image](https://user-images.githubusercontent.com/90971979/167306416-1373a361-71c7-4167-acba-cdbd5aaf4bfa.png)
 
@@ -102,7 +102,7 @@ We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight
 
 
 
-Next, we get Small, Medium and Large models using 3 scaling factors. The architecture of the network is shown in Fig.
+Next, we get Small, Medium and Large models using 3 scaling factors. The architecture of the network is shown in Table.
 
 ![image](https://user-images.githubusercontent.com/90971979/167307212-18fab78c-0ece-432f-b60a-90adda3a55e0.png)
 | **Model Architecture**        | **Dataset, Epoch Info** | **Loss** | **Accuracy** | **Time Taken**                    |
@@ -132,6 +132,10 @@ Then we use pretrained weights (pretrained on ImageNet) and get the following re
 | Pretrained EfficientNetV2 (Large)  | Valid, Epoch 29              | 0.118         | 0.966             | [00:23<00:00,  3.98it/s] |
 
 By training the model with pretrained weights, we can see that the training time with pretrained weights is reduced by about 3-4 times compared to training from scratch. At the same time, the accuracy rate basically did not decrease significantly. This is very important in industry.
+
+This is our modified model architecture.
+![Modified Architecture](https://user-images.githubusercontent.com/90971979/167322123-ac902512-cc6a-4794-895f-70fbc71ea09a.png)
+
 
 Finally, as shown in the table, through our two methods, observing the experimental results of our modified model, we find that the accuracy of the network does improve when we enhance the performance of the shallow network. This proves our point.
 
