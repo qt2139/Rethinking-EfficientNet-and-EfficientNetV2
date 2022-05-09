@@ -30,7 +30,9 @@ Tan et. Al's EfficientNetV2 (https://arxiv.org/abs/2104.00298) family of convolu
 
 Efficient proposed Compound Scaling, in which we scale either the depth, using a constant ratio in three dimensions- width, depth, and resolution. Traditional CNN's were scaled randomly based on depth. However, this causes the accury to saturate due to the additional layers- leading to the degradation problem. Compound Scaling, on the other hand, scales the three dimensions using a constant ratio thus balancing the network across them. Further, EfficientNetV2 brings in the concept of progressive learning- increasing the image sizes progressively as training continues- which drastically reduces training time. 
 
-![image](https://user-images.githubusercontent.com/90971979/167310890-b8c72934-8a79-4414-8470-85f40cb264dc.png)
+<p align="center">
+  <img width="1174" height="484" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/model%20scaling.png">
+</p>
 
 In this project we intend to provide further justification to demonstrate the advancements and improvements in the latest iterations of EfficientNet (version 2) using our own 5-class flower dataset (described below). This is done by comparing various iterations of EfficientNet, EfficientNetV2, and pre-trained EfficientNetV2 by comparing them based on size, parameters, training time, loss, etc. Further, we also demonstrate our understanding of the architecture by creating our own modified EfficientNetV2 and observe the results.
 
@@ -41,7 +43,9 @@ In this project we intend to provide further justification to demonstrate the ad
 ##  Dataset
 We use the ”flowers” dataset from TensorFlow, a dataset comprised of 3,670 images of 5 types of flowers (daisies, dandelions, roses, sunflowers, tulips)
 
-![sample_pics](https://user-images.githubusercontent.com/90971979/167304558-e1f37b8c-b191-473c-acd3-0835f84df6c0.png)</a>
+<p align="center">
+  <img width="568" height="384" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/dataset_sample.png">
+</p>
 
 ##  Example commands to execute the code
 1. First please download the dataset, https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz
@@ -80,7 +84,9 @@ For EfficientNet (version 1):
 We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model, the modified model makes the shallow network more powerful and can extract more effective information.
 First, we get 8 sub-models using 8 different scaling factors and train them on the flower dataset. The architecture of the network is shown in Table.
 
-![image](https://user-images.githubusercontent.com/90971979/167306416-1373a361-71c7-4167-acba-cdbd5aaf4bfa.png)
+<p align="center">
+  <img width="932" height="448" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/table1.png">
+</p>
 
 We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the following results.
 
@@ -104,7 +110,10 @@ We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight
 
 Next, we get Small, Medium and Large models using 3 scaling factors. The architecture of the network is shown in Table.
 
-![image](https://user-images.githubusercontent.com/90971979/167307212-18fab78c-0ece-432f-b60a-90adda3a55e0.png)
+<p align="center">
+  <img width="884" height="375" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/table2.png">
+</p>
+
 | **Model Architecture**        | **Dataset, Epoch Info** | **Loss** | **Accuracy** | **Time Taken**                    |
 |:-------------------------------:|:----------------------------:|:-------------:|:-----------------:|:--------------------------------------:|
 | EfficientNetV2 (Small)          | Train, Epoch 29              | 0.074         | 0.978             | [01:15<00:00,  4.88it/s] |
@@ -116,7 +125,11 @@ Next, we get Small, Medium and Large models using 3 scaling factors. The archite
 | Modified EfficientNetV2 (Large) | Train, Epoch 29              | 0.049         | 0.984             | [04:20<00:00,  1.47it/s] |
 | Modified EfficientNetV2 (Large) | Valid, Epoch 29              | 0.071         | 0.984             | [00:23<00:00,  3.95it/s] |
 
-We train from scratch, we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the the following results.
+We train from scratch, we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the the following results.This image is the validation accuracy of EfficientNetV2_Large trained from scratch.
+
+<p align="center">
+  <img width="1000" height="800" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/results/mypretrain_efficientnetv2_l_val_accuracy.png">
+</p>
 
 By training EfficientNetV2, we can find that EfficientNetV2 has better performance than EfficientNet, thanks to the improvement of shallow network. NVIDIA's convolution technology also enables the network to have a faster training speed even if Depthwise convolution is not used, and the performance of EfficientNetV2 exceeds that of EfficientNet.
 
@@ -131,13 +144,34 @@ Then we use pretrained weights (pretrained on ImageNet) and get the following re
 | Pretrained EfficientNetV2 (Large)  | Train, Epoch 29              | 0.224         | 0.928             | [01:13<00:00,  5.02it/s] |
 | Pretrained EfficientNetV2 (Large)  | Valid, Epoch 29              | 0.118         | 0.966             | [00:23<00:00,  3.98it/s] |
 
+This image is the validation accuracy of EfficientNetV2_Large with pretrained weights.
+<p align="center">
+  <img width="1000" height="800" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/results/my_efficientnetv2_l_val_accuracy.png">
+</p>
 By training the model with pretrained weights, we can see that the training time with pretrained weights is reduced by about 3-4 times compared to training from scratch. At the same time, the accuracy rate basically did not decrease significantly. This is very important in industry.
 
 This is our modified model architecture.
-![Modified Architecture](https://user-images.githubusercontent.com/90971979/167322123-ac902512-cc6a-4794-895f-70fbc71ea09a.png)
-
+<p align="center">
+  <img width="953" height="306" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/table3.png">
+</p>
 
 Finally, as shown in the table, through our two methods, observing the experimental results of our modified model, we find that the accuracy of the network does improve when we enhance the performance of the shallow network. This proves our point.
+
+This image is the validation accuracy of our modified model.
+<p align="center">
+  <img width="1000" height="800" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/results/modified_efficientnetv2_l_val_accuracy.png">
+</p>
+
+We also used the EfficientNetV2_Large weights trained from scratch to make predictions, and the following road pictures are the prediction results.
+<p align="center">
+  <img width="640" height="480" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/results/predict1.png">
+</p>
+<p align="center">
+  <img width="640" height="480" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/results/predict2.png">
+</p>
+As can be seen from the prediction results, our model has very good performance.  
+Finally, we experimentally demonstrate that accuracy can be improved by enhancing the capabilities of shallow networks.
+
 
 ##  Environment
 Google Cloud Platform (NVIDIA Tesla T4)  
