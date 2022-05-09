@@ -180,6 +180,6 @@ Finally, we experimentally demonstrate that accuracy can be improved by enhancin
 
 
 ##  Environment
-Google Cloud Platform (NVIDIA Tesla T4)  
-Python 3.8  
-Pytorch-gpu with Cuda 11.3
+- Google Cloud Platform (NVIDIA Tesla T4)  
+- Python 3.8  
+- Pytorch-gpu with Cuda 11.3
