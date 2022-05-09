@@ -97,7 +97,8 @@ We set epoch = 30, batch size = 16, Optimizer: SGD(lr=0.01, momentum=0.9, weight
 | EfficientNet-B6          | Epoch 29          | 0.57          | 0.979             |
 | EfficientNet-B7          | Epoch 29          | 0.56          | 0.981             |
 
-
+1. From the experimental results, it can be seen that when EfficientNet increases the image width, depth, and resolution, the accuracy will be improved, but the corresponding cost is increased training time.
+2. It can be seen from the training time and training parameters that compared with other mainstream networks, such as ResNet, EfficientNet greatly reduces the training parameters and training time due to the use of Depthwise convolution, but still has a high accuracy.
 
 
 
@@ -115,7 +116,9 @@ Next, we get Small, Medium and Large models using 3 scaling factors. The archite
 | Modified EfficientNetV2 (Large) | Train, Epoch 29              | 0.049         | 0.984             | [04:20<00:00,  1.47it/s] |
 | Modified EfficientNetV2 (Large) | Valid, Epoch 29              | 0.071         | 0.984             | [00:23<00:00,  3.95it/s] |
 
-We train from scratch， we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the the following results.
+We train from scratch, we set epochs = 30, batch size = 8, Optimizer: SGD(lr=0.01, momentum=0.9, weight_decay=1E-4), and got the the following results.
+
+By training EfficientNetV2, we can find that EfficientNetV2 has better performance than EfficientNet, thanks to the improvement of shallow network. NVIDIA's convolution technology also enables the network to have a faster training speed even if Depthwise convolution is not used, and the performance of EfficientNetV2 exceeds that of EfficientNet.
 
 Then we use pretrained weights (pretrained on ImageNet) and get the following results.
 
@@ -127,6 +130,10 @@ Then we use pretrained weights (pretrained on ImageNet) and get the following re
 | Pretrained EfficientNetV2 (Medium) | Valid, Epoch 29              | 0.131         | 0.964             | [00:11<00:00,  7.73it/s] |
 | Pretrained EfficientNetV2 (Large)  | Train, Epoch 29              | 0.224         | 0.928             | [01:13<00:00,  5.02it/s] |
 | Pretrained EfficientNetV2 (Large)  | Valid, Epoch 29              | 0.118         | 0.966             | [00:23<00:00,  3.98it/s] |
+
+By training the model with pretrained weights, we can see that the training time with pretrained weights is reduced by about 3-4 times compared to training from scratch. At the same time, the accuracy rate basically did not decrease significantly. This is very important in industry.
+
+Finally, as shown in the table, through our two methods, observing the experimental results of our modified model, we find that the accuracy of the network does improve when we enhance the performance of the shallow network. This proves our point.
 
 ##  Environment
 Google Cloud Platform (NVIDIA Tesla T4)  
