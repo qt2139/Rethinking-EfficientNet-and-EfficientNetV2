@@ -30,9 +30,7 @@ Tan et. Al's EfficientNetV2 (https://arxiv.org/abs/2104.00298) family of convolu
 
 Efficient proposed Compound Scaling, in which we scale either the depth, using a constant ratio in three dimensions- width, depth, and resolution. Traditional CNN's were scaled randomly based on depth. However, this causes the accury to saturate due to the additional layers- leading to the degradation problem. Compound Scaling, on the other hand, scales the three dimensions using a constant ratio thus balancing the network across them. Further, EfficientNetV2 brings in the concept of progressive learning- increasing the image sizes progressively as training continues- which drastically reduces training time. 
 
-<p align="center">
-  <img width="1175" height="484" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/model%20scaling.png">
-</p>
+![model scaling](https://user-images.githubusercontent.com/90971979/167332164-e3786cfb-1973-40a0-95a3-dc62206effda.png)
 
 In this project we intend to provide further justification to demonstrate the advancements and improvements in the latest iterations of EfficientNet (version 2) using our own 5-class flower dataset (described below). This is done by comparing various iterations of EfficientNet, EfficientNetV2, and pre-trained EfficientNetV2 by comparing them based on size, parameters, training time, loss, etc. Further, we also demonstrate our understanding of the architecture by creating our own modified EfficientNetV2 and observe the results.
 
@@ -83,9 +81,7 @@ For EfficientNet (version 1):
 ##  Results
 This is our Solution architecture. We will experiment according to this flowchart.
 
-<p align="center">
-  <img width="1255" height="721" src="https://github.com/qt2139/Rethinking-EfficientNet-and-EfficientNetV2/blob/main/EfficientNetV2/utils/Rethinking%20EfficientNet%20and%20EfficientNetV2.png">
-</p>
+![2](https://user-images.githubusercontent.com/90971979/167332200-dc9ca8de-f4ce-4094-8174-7bd52c2c9e01.png)
 
 We use EfficientNet and EfficientV2 and the modified EfficientV2_Large model. The modified model makes the shallow network more powerful and can extract more effective information.  
 First, we get 8 sub - EfficientNet models by using 8 different scaling factors and train them on the flower dataset. The architecture of the EfficientNet is shown in table.
