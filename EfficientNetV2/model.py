@@ -311,6 +311,26 @@ class EfficientNetV2(nn.Module):
 
         return x
 
+def modified_efficientnetv2_l(num_classes: int = 1000):
+    """
+    EfficientNetV2
+    https://arxiv.org/abs/2104.00298
+    """
+    # train_size: 384, eval_size: 480
+
+    # repeat, kernel, stride, expansion, in_c, out_c, operator, se_ratio
+    model_config = [[4, 3, 1, 1, 32, 32, 0, 0],
+                    [7, 3, 2, 4, 32, 64, 0, 0],
+                    [7, 3, 2, 4, 64, 96, 0, 0],
+                    [10, 3, 2, 4, 96, 192, 1, 0.25],
+                    [19, 3, 1, 6, 192, 224, 1, 0.25],
+                    [25, 3, 2, 6, 224, 384, 1, 0.25],
+                    [7, 3, 1, 6, 384, 640, 1, 0.25]]
+
+    model = EfficientNetV2(model_cnf=model_config,
+                           num_classes=num_classes,
+                           dropout_rate=0.4)
+    return model
 
 def efficientnetv2_s(num_classes: int = 1000):
     """
