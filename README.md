@@ -1,5 +1,5 @@
 # Rethinking EfficientNet and EfficientNetV2 - Making Shallow Networks More Powerful
-Qimeng Tao(qt2139), Aditya Kulkarni(ak4725)
+Collaborators: Qimeng Tao (qt2139), Aditya Kulkarni (ak4725)
 
 ##  Description of the project
 This is our final project for COMS 6998 at Columbia University and our advisor is Prof. Parijat Dube. 
