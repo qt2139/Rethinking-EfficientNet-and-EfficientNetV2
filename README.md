@@ -1,4 +1,4 @@
-# Rethinking EfficientNet and EfficientNetV2 - Making shallow networks more powerful
+# Rethinking EfficientNet and EfficientNetV2 - Making Shallow Networks More Powerful
 Qimeng Tao(qt2139), Aditya Kulkarni(ak4725)
 
 ##  Description of the project
